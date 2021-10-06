@@ -31,9 +31,10 @@ func (cl *ContactactList) Update(cn Contact) error {
 	return nil
 }
 
-func (cl *ContactactList) delete(cn Contact) error {
+func (cl *ContactactList) Delete(cn Contact) error {
 	for i, val := range cl.Contacts {
 		if val.id == cn.id {
+			// Deleting contact with index i
 			cl.Contacts = append(cl.Contacts[:i], cl.Contacts[i+1:]...)
 
 			return nil
@@ -51,8 +52,8 @@ func (cl *ContactactList) Get(id int) (Contact, error) {
 	return Contact{}, errors.New("contact with such id does not exist")
 }
 
-func (cl *ContactactList) GetAll() []Contact {
-	return cl.Contacts
+func (cl *ContactactList) GetAll() ([]Contact, error) {
+	return cl.Contacts, nil
 }
 
 func main() {

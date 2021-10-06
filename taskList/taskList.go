@@ -43,8 +43,8 @@ func (tl *TaskList) Get(id int) (Task, error) {
 	return Task{}, errors.New("no task with such id")
 }
 
-func (tl *TaskList) GetAll() []Task {
-	return tl.Tasks
+func (tl *TaskList) GetAll() ([]Task, error) {
+	return tl.Tasks, nil
 }
 
 func (tl *TaskList) Delete(t Task) error {
